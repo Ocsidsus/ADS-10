@@ -31,15 +31,16 @@ class Tree {
     void Perms(Node* _root, std::vector<char> perm = {}) {
         if (_root->value != '*')
             perm.push_back(_root->value);
-        if (_root->childList.size() == 0)
+        if (_root->childList.size() == 0) {
             prmtns.push_back(perm);
-        else
+        } else {
             for (int i = 0; i < _root->childList.size(); i++)
                 Perms(_root->childList[i], perm);
+        }
     }
 
  public:
-    Tree(std::vector<char> setSmbls) {
+    explicit Tree(std::vector<char> setSmbls) {
         root = new Node;
         root->value = '*';
         MakeTree(root, setSmbls);
